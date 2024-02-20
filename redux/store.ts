@@ -1,10 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import fetchingApi from './slices/fetchingApi'
+import favoriteSlice from './slices/favoriteSlice'
 
 export const store = configureStore({
     reducer: {
-        fetchingApi: fetchingApi
+        fetchingApi: fetchingApi,
+        favortie: favoriteSlice
     },
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false })
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

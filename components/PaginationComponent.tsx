@@ -23,7 +23,7 @@ interface PaginationComponentProps {
 export default function PaginationComponent({ renderItem, itemData, customHeight }: PaginationComponentProps) {
     let flatListRef = useRef<any | null>();
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [data, setData] = useState(itemData);
+    const [data, setData] = useState<any>(itemData);
     const [searchText, setSearchText] = useState('');
 
     const onViewRef = useRef(({ changed }: { changed: any }) => {
@@ -50,8 +50,7 @@ export default function PaginationComponent({ renderItem, itemData, customHeight
             setData(itemData);
         }
         else {
-            let filteredItem: any = itemData?.filter((dataN: any) => (dataN?.name.toLowerCase().startsWith(text)))
-            setData(filteredItem);
+            setData(itemData?.filter((dataN: any) => (dataN?.name.toLowerCase().includes(text))));
         }
     }
 
@@ -67,8 +66,8 @@ export default function PaginationComponent({ renderItem, itemData, customHeight
                 />
             </View>
             <FlatList
-                data={data}
-                extraData={data}
+                data={data ? data : []}
+                extraData={data ? data : []}
                 renderItem={renderItem}
                 keyExtractor={(item, index) => index.toString()}
                 horizontal
