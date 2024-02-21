@@ -1,0 +1,220 @@
+[
+  {
+    "ContainingType": "RickAndMortyWebApi.Controllers.CharactersMsController",
+    "Method": "GetCharactersM",
+    "RelativePath": "api/CharactersMs",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[RickAndMortyWebApi.Models.CharactersM, RickAndMortyWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "RickAndMortyWebApi.Controllers.CharactersMsController",
+    "Method": "PostCharactersM",
+    "RelativePath": "api/CharactersMs",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "charactersM",
+        "Type": "RickAndMortyWebApi.Models.CharactersM",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "RickAndMortyWebApi.Models.CharactersM",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "RickAndMortyWebApi.Controllers.CharactersMsController",
+    "Method": "GetCharactersM",
+    "RelativePath": "api/CharactersMs/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "RickAndMortyWebApi.Models.CharactersM",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "RickAndMortyWebApi.Controllers.CharactersMsController",
+    "Method": "PutCharactersM",
+    "RelativePath": "api/CharactersMs/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "charactersM",
+        "Type": "RickAndMortyWebApi.Models.CharactersM",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RickAndMortyWebApi.Controllers.CharactersMsController",
+    "Method": "DeleteCharactersM",
+    "RelativePath": "api/CharactersMs/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RickAndMortyWebApi.Controllers.EpisodesController",
+    "Method": "GetEpisodes",
+    "RelativePath": "api/Episodes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[RickAndMortyWebApi.Models.Episode, RickAndMortyWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "RickAndMortyWebApi.Controllers.EpisodesController",
+    "Method": "PostEpisode",
+    "RelativePath": "api/Episodes",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "episode",
+        "Type": "RickAndMortyWebApi.Models.Episode",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "RickAndMortyWebApi.Models.Episode",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "RickAndMortyWebApi.Controllers.EpisodesController",
+    "Method": "GetEpisode",
+    "RelativePath": "api/Episodes/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "RickAndMortyWebApi.Models.Episode",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "RickAndMortyWebApi.Controllers.EpisodesController",
+    "Method": "PutEpisode",
+    "RelativePath": "api/Episodes/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "episode",
+        "Type": "RickAndMortyWebApi.Models.Episode",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RickAndMortyWebApi.Controllers.EpisodesController",
+    "Method": "DeleteEpisode",
+    "RelativePath": "api/Episodes/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
