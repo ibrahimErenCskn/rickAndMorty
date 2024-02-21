@@ -3,4 +3,5 @@
 ![image](https://github.com/ibrahimErenCskn/rickAndMorty/assets/135732239/73492364-f674-436c-a215-688a08cee4cb)
 ![image](https://github.com/ibrahimErenCskn/rickAndMorty/assets/135732239/d514290f-053d-4b33-b4ee-b14faa206d9c)
 ![image](https://github.com/ibrahimErenCskn/rickAndMorty/assets/135732239/c2cf6b85-1c37-415b-8e5e-2b123b56c1ca)
-![image](https://github.com/ibrahimErenCskn/rickAndMorty/assets/135732239/9471584a-d6c9-43a7-9afd-7ef0a6a5de4f)
+![image](https://github.com/ibrahimErenCskn/rickAndMorty/assets/135732239/ec6a7e71-39a6-4271-a07f-c8a8a2c9ea86)
+
