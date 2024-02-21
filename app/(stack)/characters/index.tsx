@@ -7,10 +7,50 @@ import { fetchCharacters } from '@/redux/slices/fetchingApi';
 import PaginationComponent from '@/components/PaginationComponent';
 import { AntDesign } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { addData, setNotificationData } from '@/redux/slices/favoriteSlice';
+import { addData, readData, setNotificationData } from '@/redux/slices/favoriteSlice';
 import CustomButton from '@/components/CustomButton';
 import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
+
+
+Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+        shouldShowAlert: true,
+        shouldPlaySound: true,
+        shouldSetBadge: false,
+    }),
+});
+
+async function registerForPushNotificationsAsync() {
+    let token;
+
+    if (Platform.OS === 'android') {
+        await Notifications.setNotificationChannelAsync('default', {
+            name: 'default',
+            importance: Notifications.AndroidImportance.MAX,
+            vibrationPattern: [0, 250, 250, 250],
+            lightColor: '#FF231F7C',
+        });
+    }
+
+    if (Device.isDevice) {
+        const { status: existingStatus } = await Notifications.getPermissionsAsync();
+        let finalStatus = existingStatus;
+        if (existingStatus !== 'granted') {
+            const { status } = await Notifications.requestPermissionsAsync();
+            finalStatus = status;
+        }
+        if (finalStatus !== 'granted') {
+            alert('Failed to get push token for push notification!');
+            return;
+        }
+        token = (await Notifications.getExpoPushTokenAsync({ projectId: 'your-project-id' })).data;
+        console.log(token);
+    }
+
+    return token;
+}
+
 
 export default function Characters() {
     const { charactersData, charactersLength, charactersLoading } = useSelector((state: any) => state.fetchingApi)
@@ -25,25 +65,9 @@ export default function Characters() {
 
     useEffect(() => {
         dispatch(fetchCharacters({ id: item?.id }))
+        dispatch(readData())
     }, [dispatch]);
 
-    useEffect(() => {
-        const notific = async () => {
-            if (!isLoading) {
-                if (notification) {
-                    await Notifications.scheduleNotificationAsync({
-                        content: {
-                            title: "Ekleme Hatası",
-                            body: notification,
-                        },
-                        trigger: { seconds: 1 },
-                    });
-                    dispatch(setNotificationData(''))
-                }
-            }
-        }
-        notific()
-    }, [notification])
 
     async function schedulePushNotification(item: any) {
         await dispatch(addData({ value: item }))
@@ -65,14 +89,24 @@ export default function Characters() {
             Notifications.removeNotificationSubscription(responseListener.current);
         };
     }, []);
-    const removeItemValue = async () => {
-        try {
-            await AsyncStorage.removeItem('favoriteC');
+
+    useEffect(() => {
+        const notific = async () => {
+            if (notification) {
+                await Notifications.scheduleNotificationAsync({
+                    content: {
+                        title: "Ekleme Hatası",
+                        body: notification,
+                    },
+                    trigger: { seconds: 2 },
+                });
+                console.log(notification)
+                dispatch(setNotificationData(''))
+            }
         }
-        catch (exception) {
-            console.log(exception)
-        }
-    }
+        notific()
+    }, [notification])
+
     const renderCharactersItem = ({ item }: any) => {
         return (
             <View style={{ paddingVertical: 20, gap: 40, alignItems: 'center' }}>
@@ -110,34 +144,4 @@ export default function Characters() {
             </View>
         </SafeAreaView>
     )
-}
-
-async function registerForPushNotificationsAsync() {
-    let token;
-
-    if (Platform.OS === 'android') {
-        await Notifications.setNotificationChannelAsync('default', {
-            name: 'default',
-            importance: Notifications.AndroidImportance.MAX,
-            vibrationPattern: [0, 250, 250, 250],
-            lightColor: '#FF231F7C',
-        });
-    }
-
-    if (Device.isDevice) {
-        const { status: existingStatus } = await Notifications.getPermissionsAsync();
-        let finalStatus = existingStatus;
-        if (existingStatus !== 'granted') {
-            const { status } = await Notifications.requestPermissionsAsync();
-            finalStatus = status;
-        }
-        if (finalStatus !== 'granted') {
-            alert('Failed to get push token for push notification!');
-            return;
-        }
-        token = (await Notifications.getExpoPushTokenAsync({ projectId: 'your-project-id' })).data;
-        console.log(token);
-    }
-
-    return token;
 }
